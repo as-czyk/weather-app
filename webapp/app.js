@@ -1,7 +1,8 @@
+import { googleKey } from '../webapp/keys.env'
+
 const baseUrlFind = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?'
 const baseUrlDetails = 'https://maps.googleapis.com/maps/api/place/details/json?'
 const baseUrlPlaces = ''
-const googleKey = 'AIzaSyDlANkQzcIJN9tbjQMsYx7AT1efqu-B6bY'
 
 //UI Element
 const button = document.querySelector('#search')
