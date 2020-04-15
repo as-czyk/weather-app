@@ -6,7 +6,7 @@ const currentWeather = async (city) => {
     let weatherKey = await apikey();
     weatherKey = weatherKey.apiKeyWeather
 
-    let url = `${baseURLCurrent}&q=${city}&appid=${weatherKey}`
+    let url = `${baseURLCurrent}&q=${city}&appid=${weatherKey}&units=metric`
 
     const res = await fetch(url, {
         method: 'GET',
@@ -36,7 +36,7 @@ const weatherForecast = async (city) => {
     let weatherKey = await apikey()
     weatherKey = weatherKey.apiKeyWeather
 
-    let url = `${baseURLForecast}q=${city}&appid=${weatherKey}&mode=json`
+    let url = `${baseURLForecast}q=${city}&appid=${weatherKey}&mode=json&units=metric`
 
     const res = await fetch (url, {
         method: 'GET'

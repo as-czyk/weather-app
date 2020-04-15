@@ -60,7 +60,7 @@ const getWeatherData = async () => {
 }
 
 //Update UI-Element
-const updateUI = async () => {
+const updatePlaces = async () => {
 
     const cityName = document.getElementById('cityName');
     const cityImage = document.querySelector('.img');
@@ -69,10 +69,10 @@ const updateUI = async () => {
     cityImage.style.backgroundImage = ''
 
     await getImageAndCity();
-    const request = await fetch('http://localhost:3030/getPlaces');
+    const res = await fetch('http://localhost:3030/getPlaces');
 
     try{
-      const placesData = await request.json();
+      const placesData = await res.json();
       cityName.textContent = placesData[0].photos.cityName;
       cityImage.style.backgroundImage = `url(${placesData[0].photoReference})`; 
   
@@ -81,7 +81,37 @@ const updateUI = async () => {
     }
 }
 
+const updateWeather = async () => {
+
+    const weatherIcon = document.querySelector('#current__weather__icon')
+    const currentTime = document.querySelector('#current__time')
+    const currentWeatherWord = document.querySelector('#current__weather__word')
+    const minmaxTemp = document.querySelector('#current__minmax__temperature')
+
+    weatherIcon.src = '';
+    currentTime.textContent = '';
+    currentWeatherWord.textContent = '';
+    minmaxTemp.textContent = '';
+
+    await getWeatherData()
+    const res = await fetch ('http://localhost:3030/api/getWeather')
+
+    try {
+        const data = await res.json()
+
+        weatherIcon.src = `http://openweathermap.org/img/wn/${data[0].currentWeather.currentWeather.icon}@2x.png`
+        console.log(weatherIcon.style.src)
+        currentTime.textContent = '17:00'
+        currentWeatherWord.textContent = data[0].currentWeather.currentWeather.main
+        minmaxTemp.textContent = `${data[0].currentWeather.currentTemperature.temp_min} / ${data[0].currentWeather.currentTemperature.temp_max}`
+
+    } catch (err) {
+        console.log('error', err)
+    }
+}
+
 //Event Listener
 button.addEventListener('click', () => {
-    getWeatherData();
+    updatePlaces();
+    updateWeather();
 })
