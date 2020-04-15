@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href = "main.css" rel = "stylesheet">
     <title>Weather App</title>
 </head>
 <body>
     <h2>Places API</h2>
-    <p id = "city"></p>
-    <p id = "picture"></p>
     <button id = "search">Click me</button>
     <input type = "text" id = "input">
+    <div class = "information-places">
+        <p id ="cityName"></p>
+        <img id = "cityImage" src="">
+    </div>
 </body>
 <script type = 'module' src = "app.js" rel = "javascript"></script>
 <script src = "../webapp/js/places.js" rel = "javascript"></script>
