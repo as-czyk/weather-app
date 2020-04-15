@@ -1,0 +1,38 @@
+@media only screen and (min-width: 591px) and (max-width: 1274px) {
+
+    body {
+        background-color: aqua;
+    }
+    
+    .main__container {
+        display: grid;
+        width: 95vw;
+        border: 1px solid red;
+        margin: auto;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 100px 400px 500px 500px 50px;
+        grid-template-areas: 
+        "bar bar"
+        "img img"
+        "ctn1 ctn2"
+        "ctn3 ctn4"
+        "ft ft";
+    }
+
+    .current__temperature__wrapper {
+        background-color: #7768E5;
+        border-radius: 50px;
+        height: 70%;
+        display: flex;
+        width: 110px;
+        flex-direction: column;
+        align-items: center;
+        justify-content:center;
+        color: #fff;
+        margin-left: 25px;
+    }
+
+    .current__ctn {
+        display:none;
+    }
+}

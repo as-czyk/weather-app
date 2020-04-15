@@ -1,0 +1,73 @@
+@media screen and (max-width: 590px) {
+
+    .main__container {
+        display: grid;
+        width: 95vw;
+        border: 1px solid red;
+        margin: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: 100px 400px repeat(5, 500px) 50px;
+        grid-template-areas: 
+        "bar"
+        "img"
+        "cur"
+        "ctn1"
+        "ctn2"
+        "ctn3"
+        "ctn4"
+        "ft";
+    }
+
+    .information__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f4f8f7;
+        border-radius: 20px;
+        opacity: 0.8;
+        width: 100%;
+        height: 15vh;
+        margin: 0px;
+    }
+
+    .img {
+        grid-area: img;
+        border: 1px solid red;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .current__weather {
+        display: none;
+    }
+
+    .header__information {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #welcome__sentence {
+        display: none;
+    }
+
+    #countryName {
+        display: none;
+    }
+
+    .current__ctn {
+        grid-area: cur;
+        margin: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        border: 1px solid red;
+    }
+    
+
+}
