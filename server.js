@@ -43,3 +43,13 @@ app.post('/places', function(req, res) {
 app.get('/getPlaces', function(req, res) {
     res.send(placesData)
 })
+
+app.post('/weather', function(req, res) {
+    weatherData.splice(0, 0, req.body)
+    res.sendStatus(200)
+    console.log(weatherData)
+})
+
+app.get('/api/getWeather', function(req, res) {
+    res.send(weatherData)
+})

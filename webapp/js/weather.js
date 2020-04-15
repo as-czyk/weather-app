@@ -16,8 +16,16 @@ const currentWeather = async (city) => {
     })
 
     try {
-        const weatherData = res.json()
-        console.log(weatherData)
+        const weatherData = await res.json()
+        
+        const currentWeather = {
+            currentWeather : weatherData.weather[0],
+            currentTemperature : weatherData.main,
+            clouds: weatherData.clouds,
+            sunset : weatherData.sys
+        }
+
+        return currentWeather
     } catch (err) {
         console.log('error', err)
     }
@@ -35,8 +43,10 @@ const weatherForecast = async (city) => {
     })
 
     try {
-        const forecastData = await res.json()
-        console.log(forecastData)
+        const data = await res.json()
+        const forecastData = data.list
+
+        return forecastData
     } catch (err) {
         console.log('error', err)
     }

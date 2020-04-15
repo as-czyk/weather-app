@@ -33,6 +33,32 @@ const getImageAndCity = async () => {
     }
 }
 
+const getWeatherData = async () => {
+    
+    const city = inputText.value
+
+    try {
+        const current = await currentWeather(city);
+        const forecast = await weatherForecast(city);
+
+        const postData = await fetch ('http://localhost:3030/weather', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                
+                currentWeather: current,
+                forecastWeather: forecast,
+            })
+        })
+
+
+    } catch (err) {
+        console.log('error', err)
+    }
+}
+
 //Update UI-Element
 const updateUI = async () => {
 
@@ -57,5 +83,5 @@ const updateUI = async () => {
 
 //Event Listener
 button.addEventListener('click', () => {
-    updateUI();
+    getWeatherData();
 })
