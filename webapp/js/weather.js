@@ -1,1 +1,0 @@
-const weatherKey = '2f9f6d737fdf8e1744a6b76313ad88b2'

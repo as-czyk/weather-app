@@ -37,10 +37,10 @@ const getImageAndCity = async () => {
 const updateUI = async () => {
 
     const cityName = document.getElementById('cityName');
-    const cityImage = document.getElementById('cityImage');
+    const cityImage = document.querySelector('.img');
 
     cityName.textContent = '';
-    cityImage.src = '';
+    cityImage.style.backgroundImage = ''
 
     await getImageAndCity();
     const request = await fetch('http://localhost:3030/getPlaces');
@@ -48,7 +48,7 @@ const updateUI = async () => {
     try{
       const placesData = await request.json();
       cityName.textContent = placesData[0].photos.cityName;
-      cityImage.src = placesData[0].photoReference; 
+      cityImage.style.backgroundImage = `url(${placesData[0].photoReference})`; 
   
     } catch(error){
       console.log("error", error);

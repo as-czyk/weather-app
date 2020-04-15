@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
     <link href = "main.css" rel = "stylesheet">
     <title>Weather App</title>
 </head>
 <body>
     <main class = "main__container">
         <header class = "bar">
-            <h2>Places API</h2>
             <button id = "search">Click me</button>
             <input type = "text" id = "input">
             <div class = "information-places">
@@ -19,8 +17,15 @@
             </div>
         </header>
         <section class = "img">
-            <div class = "information-wrapper">
-                <h1 id = "cityName">Frankfurt</h1>
+            <div class = "information__wrapper">
+                <div class = "header__information">
+                    <img src = "../resources/location.svg">
+                    <h1 id = "cityName">Frankfurt am Main</h1>
+                </div>
+                <p>A city in the country of<span id = "countryName">     Germany</span></p>
+                <div class = "current__weather">
+
+                </div>
             </div>
         </section>
         <section class = "ctn__one">

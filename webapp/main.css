@@ -24,6 +24,10 @@ body {
     grid-area: bar;
     border: 1px solid red;
     margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .img {
@@ -71,15 +75,37 @@ body {
 
 /** Theme Styling **/
 
-.information-wrapper {
+.information__wrapper {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     background-color: #f4f8f7;
     border-radius: 20px;
     opacity: 0.8;
-    width: 15vw;
+    width: 20vw;
     height: 30vh;
-    margin-left: 40px;
+    margin-left: 80px;
+    padding-left: 20px;
+}
+
+.header__information {
+    display: flex;
+    flex-direction: row;
+}
+
+#cityName {
+    padding-left: 10px;
+}
+
+#countryName {
+    color: #7768E5;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.current__weather {
+    border: 1px solid red;
+    width: 18vw;
+    height: 10vh
 }
