@@ -12,11 +12,9 @@
 <body>
     <main class = "main__container">
         <header class = "bar">
-            <button id = "search">Click me</button>
-            <input type = "text" id = "input">
-            <div class = "information-places">
-                <img id = "cityImage" src="">
-            </div>
+            <input type = "text" id = "input" class = "input__field" placeholder="CITY">
+            <button id = "search" class = "search__button"><img src = "../resources/lupe.svg"></button>
+            <button id = "loading">Loading</button>
         </header>
         <section class = "img">
             <div class = "information__wrapper">
@@ -44,8 +42,8 @@
 
         </section>
         <section class = "ctn__one">
-            <p id = "forecast__hour"><b>3 Hour</b> Forecast</p>
             <div class = "forecast__wrapper">
+                <p id = "forecast__hour"><b>3 Hour</b> Forecast</p>
                 <div class = "forecast__row">
                     <img id = 'weather__icon__3' src='http://openweathermap.org/img/wn/10d@2x.png' />
                     <div class = "day__wrapper">
@@ -79,8 +77,8 @@
             </div>
         </section>
         <section class = "ctn__two">
-            <p id = "forecast__day"><b>3 Day</b> Forecast</p>
             <div class = "forecast__wrapper">
+                <p id = "forecast__day"><b>3 Day</b> Forecast</p>
                 <div class = "forecast__row">
                     <img id = 'weather__icon__1' src = ""/>
                     <div class = "day__wrapper">
@@ -114,7 +112,9 @@
             </div>
         </section>
         <section class = "ctn__three">
-            <p id = "place__vist"><b>Place to </b>visit</p>
+            <div class = "forecast__wrapper">
+                <p id = "place__vist"><b>Place to </b>visit</p>
+            </div>
         </section>
 
         <footer class = "footer">
