@@ -1,6 +1,6 @@
 const express = require('express');
-const bodyParser = require('body-parser')
-const cors = require('cors')
+const bodyParser = require('body-parser');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
@@ -21,9 +21,17 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static('webapp'))
 
-app.get('/citydata', function(req, res){
+//Helper function
+function setTime (time) {
+    let date = new Date(time*1000)
+    let hours = date.getHours()
+    let minutes = "0" + date.getMinutes()
 
-})
+    let formattedTime = hours + ':' + minutes.substr(-2)
+
+    return formattedTime
+}
+
 
 app.get('/apiKey', function(req, res) {
     res.send(
@@ -45,9 +53,28 @@ app.get('/getPlaces', function(req, res) {
 })
 
 app.post('/weather', function(req, res) {
+
+    //Rounding current weather
+    req.body.currentWeather.currentTemperature.temp_max = Math.round(req.body.currentWeather.currentTemperature.temp_max)
+    req.body.currentWeather.currentTemperature.temp_min = Math.round(req.body.currentWeather.currentTemperature.temp_min)
+
+    //Rounding Forecast weather
+    req.body.forecastWeather[0].main.temp_min = Math.round(req.body.forecastWeather[0].main.temp_min)
+    req.body.forecastWeather[0].main.temp_max = Math.round(req.body.forecastWeather[0].main.temp_max)
+
+    req.body.forecastWeather[1].main.temp_min = Math.round(req.body.forecastWeather[1].main.temp_min)
+    req.body.forecastWeather[1].main.temp_max = Math.round(req.body.forecastWeather[1].main.temp_max)
+
+    req.body.forecastWeather[2].main.temp_min = Math.round(req.body.forecastWeather[2].main.temp_min)
+    req.body.forecastWeather[2].main.temp_max = Math.round(req.body.forecastWeather[2].main.temp_max)
+
+    //Set time 
+    req.body.forecastWeather[0].dt = setTime(req.body.forecastWeather[0].dt);
+    req.body.forecastWeather[1].dt = setTime(req.body.forecastWeather[1].dt);
+    req.body.forecastWeather[2].dt = setTime(req.body.forecastWeather[2].dt);
+
     weatherData.splice(0, 0, req.body)
     res.sendStatus(200)
-    console.log(weatherData)
 })
 
 app.get('/api/getWeather', function(req, res) {
