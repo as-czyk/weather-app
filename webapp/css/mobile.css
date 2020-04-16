@@ -6,7 +6,7 @@
         border: 1px solid red;
         margin: auto;
         grid-template-columns: 1fr;
-        grid-template-rows: 100px 400px repeat(5, 500px) 50px;
+        grid-template-rows: 100px 400px repeat(4, 500px) 50px;
         grid-template-areas: 
         "bar"
         "img"
@@ -14,7 +14,6 @@
         "ctn1"
         "ctn2"
         "ctn3"
-        "ctn4"
         "ft";
     }
 
