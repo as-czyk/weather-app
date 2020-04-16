@@ -22,6 +22,24 @@ const weatherWord9 = document.querySelector('#weather__word__9')
 const time9 = document.querySelector('#time__9')
 const minmax9 = document.querySelector('#minmax__temperature__9')
 
+const weatherIcon1 = document.querySelector('#weather__icon__1')
+const weatherWord1 = document.querySelector('#weather__word__1')
+const time1 = document.querySelector('#time__1')
+const minmax1 = document.querySelector('#minmax__temperature__1')
+
+const weatherIcon2 = document.querySelector('#weather__icon__2')
+const weatherWord2 = document.querySelector('#weather__word__2')
+const time2 = document.querySelector('#time__2')
+const minmax2 = document.querySelector('#minmax__temperature__2')
+
+const weatherIcon4 = document.querySelector('#weather__icon__4')
+const weatherWord4 = document.querySelector('#weather__word__4')
+const time4 = document.querySelector('#time__4')
+const minmax4 = document.querySelector('#minmax__temperature__4')
+
+const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+const currentDate = new Date
+
 
 /**
  * @description Helper function to erase all current entries
@@ -44,13 +62,27 @@ function deleteContent() {
     time3.textContent = '';
     minmax3.textContent = '';
 
+    weatherIcon1.src = '';
+    weatherWord1.textContent = '';
+    time1.textContent = '';
+    minmax1.textContent = '';
+
+    weatherIcon2.src = '';
+    weatherWord2.textContent = '';
+    time2.textContent = '';
+    minmax2.textContent = '';
+
+    weatherIcon3.src = '';
+    weatherWord3.textContent = '';
+    time3.textContent = '';
+    minmax3.textContent = '';
+
     weatherIcon.src = '';
     currentTime.textContent = '';
     currentWeatherWord.textContent = '';
     minmaxTemp.textContent = '';
 
 }
-
 
 /**
  * @description Function to render the image and cityname
@@ -90,6 +122,7 @@ const getWeatherData = async () => {
     try {
         const current = await currentWeather(city);
         const forecast = await weatherForecast(city);
+        const dailyforecast = await dailyForecast(current.coord.lon, current.coord.lat)
 
         const postData = await fetch ('http://localhost:3030/weather', {
             method: 'POST',
@@ -99,6 +132,7 @@ const getWeatherData = async () => {
             body: JSON.stringify({
                 currentWeather: current,
                 forecastWeather: forecast,
+                dailyforecast: dailyforecast
             })
         })
 
@@ -159,6 +193,21 @@ const updateWeather = async () => {
         weatherWord9.textContent = data[0].forecastWeather[2].weather[0].main
         time9.textContent = data[0].forecastWeather[2].dt
         minmax9.textContent = `${data[0].forecastWeather[2].main.temp_min} / ${data[0].forecastWeather[2].main.temp_max}`
+
+        weatherIcon1.src = `http://openweathermap.org/img/wn/${data[0].dailyforecast[0].weather[0].icon}@2x.png`
+        weatherWord1.textContent = data[0].dailyforecast[0].weather[0].main
+        time1.textContent = days[currentDate.getDay()]
+        minmax1.textContent = `${data[0].dailyforecast[0].temp.min} / ${data[0].dailyforecast[0].temp.max}`
+
+        weatherIcon2.src = `http://openweathermap.org/img/wn/${data[0].dailyforecast[1].weather[0].icon}@2x.png`
+        weatherWord2.textContent = data[0].dailyforecast[1].weather[0].main
+        time2.textContent = days[currentDate.getDay() + 1]
+        minmax2.textContent = `${data[0].dailyforecast[1].temp.min} / ${data[0].dailyforecast[1].temp.max}`
+
+        weatherIcon4.src = `http://openweathermap.org/img/wn/${data[0].dailyforecast[2].weather[0].icon}@2x.png`
+        weatherWord4.textContent = data[0].dailyforecast[2].weather[0].main
+        time4.textContent = days[currentDate.getDay() + 2]
+        minmax4.textContent = `${data[0].dailyforecast[2].temp.min} / ${data[0].dailyforecast[2].temp.max}`
 
     } catch (err) {
         console.log('error', err)

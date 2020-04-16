@@ -68,12 +68,22 @@ app.post('/weather', function(req, res) {
     req.body.forecastWeather[2].main.temp_min = Math.round(req.body.forecastWeather[2].main.temp_min)
     req.body.forecastWeather[2].main.temp_max = Math.round(req.body.forecastWeather[2].main.temp_max)
 
+    req.body.dailyforecast[0].temp.min = Math.round(req.body.dailyforecast[0].temp.min)
+    req.body.dailyforecast[0].temp.max = Math.round(req.body.dailyforecast[0].temp.max)
+
+    req.body.dailyforecast[1].temp.min = Math.round(req.body.dailyforecast[1].temp.min)
+    req.body.dailyforecast[1].temp.max = Math.round(req.body.dailyforecast[1].temp.max)
+
+    req.body.dailyforecast[2].temp.min = Math.round(req.body.dailyforecast[2].temp.min)
+    req.body.dailyforecast[2].temp.max = Math.round(req.body.dailyforecast[2].temp.max)
+
     //Set time 
     req.body.forecastWeather[0].dt = setTime(req.body.forecastWeather[0].dt);
     req.body.forecastWeather[1].dt = setTime(req.body.forecastWeather[1].dt);
     req.body.forecastWeather[2].dt = setTime(req.body.forecastWeather[2].dt);
 
     weatherData.splice(0, 0, req.body)
+    console.log(weatherData)
     res.sendStatus(200)
 })
 
