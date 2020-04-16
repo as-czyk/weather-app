@@ -40,6 +40,11 @@ const minmax4 = document.querySelector('#minmax__temperature__4')
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 const currentDate = new Date
 
+const load = document.querySelector('#loading')
+const sec = document.querySelectorAll('[class^=ctn__]')
+const wrapper = document.querySelectorAll('.forecast__wrapper')
+const info_wrapper = document.querySelector('.information__wrapper')
+const img = document.querySelector('.img')
 
 /**
  * @description Helper function to erase all current entries
@@ -216,6 +221,34 @@ const updateWeather = async () => {
 
 //Event Listener
 button.addEventListener('click', () => {
-    //updatePlaces();
+    
+
+    wrapper.forEach(item => {
+        item.classList.toggle('currently__loading')
+    })
+    info_wrapper.classList.toggle('currently__loading')
+    img.classList.toggle('animated-background')
+    sec.forEach(item => {
+        item.classList.toggle('animated-background')
+    })
+
+    console.log('Before')
+
+    updatePlaces();
     updateWeather();
+
+    console.log('After')
+
+});
+
+load.addEventListener('click', () => {
+
+    wrapper.forEach(item => {
+        item.classList.toggle('currently__loading')
+    })
+    info_wrapper.classList.toggle('currently__loading')
+    img.classList.toggle('animated-background')
+    sec.forEach(item => {
+        item.classList.toggle('animated-background')
+    })
 })
