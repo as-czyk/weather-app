@@ -13,8 +13,7 @@
     <main class = "main__container">
         <header class = "bar">
             <input type = "text" id = "input" class = "input__field" placeholder="CITY">
-            <button id = "search" class = "search__button"><img src = "../resources/lupe.svg"></button>
-            <button id = "loading">Loading</button>
+            <button id = "search" class = "search__button"><img id = "search__icon" src = "../resources/lupe.svg"></button>
         </header>
         <section class = "img">
             <div class = "information__wrapper">
@@ -38,8 +37,20 @@
                 </div>
             </div>
         </section>
-        <section class = "current__ctn ">
-
+        <section class = "ctn__current">
+            <div class = "current__weather__mobile">
+                <p id = "forecast__hour"><b>Current</b> Weather</p>
+                <div class = "forecast__row">
+                    <img id = 'weather__icon__mobile' src='http://openweathermap.org/img/wn/10d@2x.png' />
+                    <div class = "day__wrapper">
+                        <span id = "time__mobile">15:00</span>
+                        <span id = "weather__word__mobile">Cloudy</span>
+                    </div>
+                    <div class = "temperature__wrapper">
+                        <span id = "minmax__temperature__mobile">32 / 26</span>
+                    </div>
+                </div>
+            </div>
         </section>
         <section class = "ctn__one">
             <div class = "forecast__wrapper">

@@ -201,7 +201,7 @@ body {
     align-items: center;
 }
 
-.current__ctn {
+.ctn__current{
     display: none;
 }
 
@@ -210,6 +210,10 @@ body {
 }
 
 .forecast__wrapper img {
+    filter: invert(57%) sepia(57%) saturate(6873%) hue-rotate(228deg) brightness(98%) contrast(83%);
+}
+
+#weather__icon__mobile {
     filter: invert(57%) sepia(57%) saturate(6873%) hue-rotate(228deg) brightness(98%) contrast(83%);
 }
 

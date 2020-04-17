@@ -6,7 +6,7 @@
         border: 1px solid red;
         margin: auto;
         grid-template-columns: 1fr;
-        grid-template-rows: 100px 400px repeat(4, 500px) 50px;
+        grid-template-rows: 100px 400px 300px repeat(3, 500px) 50px;
         grid-template-areas: 
         "bar"
         "img"
@@ -58,7 +58,7 @@
         display: none;
     }
 
-    .current__ctn {
+    .ctn__current {
         grid-area: cur;
         margin: 5px;
         display: flex;
@@ -67,6 +67,18 @@
         align-items: center;
         border: 1px solid red;
     }
-    
 
+    .current__weather__mobile {
+        height: 100%;
+        width: 100%;
+        margin: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    #cityName {
+        font-size: 18px;
+    }
 }
