@@ -77,6 +77,7 @@ app.post('/weather', function(req, res) {
     req.body.dailyforecast[2].temp.min = Math.round(req.body.dailyforecast[2].temp.min)
     req.body.dailyforecast[2].temp.max = Math.round(req.body.dailyforecast[2].temp.max)
 
+    req.body.currentWeather.currentTemperature.temp = Math.round(req.body.currentWeather.currentTemperature.temp)
     //Set time 
     req.body.forecastWeather[0].dt = setTime(req.body.forecastWeather[0].dt);
     req.body.forecastWeather[1].dt = setTime(req.body.forecastWeather[1].dt);

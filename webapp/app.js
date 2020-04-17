@@ -37,6 +37,11 @@ const weatherWord4 = document.querySelector('#weather__word__4')
 const time4 = document.querySelector('#time__4')
 const minmax4 = document.querySelector('#minmax__temperature__4')
 
+const weatherIconMobile = document.querySelector('#weather__icon__mobile')
+const currentTimeMobile = document.querySelector('#time__mobile')
+const currentWeatherWordMobile = document.querySelector('#weather__word__mobile')
+const tempMobile = document.querySelector('#minmax__temperature__mobile')
+
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 const currentDate = new Date
 
@@ -45,6 +50,7 @@ const sec = document.querySelectorAll('[class^=ctn__]')
 const wrapper = document.querySelectorAll('.forecast__wrapper')
 const info_wrapper = document.querySelector('.information__wrapper')
 const img = document.querySelector('.img')
+const mobileLoading = document.querySelector('.current__weather__mobile')
 
 /**
  * @description Helper function to erase all current entries
@@ -88,6 +94,25 @@ function deleteContent() {
     minmaxTemp.textContent = '';
 
 }
+
+/**
+ * @description Helper function to display loading state
+ */
+
+function loadingAnimation() {
+    
+    wrapper.forEach(item => {
+        item.classList.toggle('currently__loading')
+    })
+    info_wrapper.classList.toggle('currently__loading')
+    mobileLoading.classList.toggle('currently__loading')
+
+    img.classList.toggle('animated-background')
+    sec.forEach(item => {
+        item.classList.toggle('animated-background')
+    })
+}
+
 
 /**
  * @description Function to render the image and cityname
@@ -166,7 +191,7 @@ const updatePlaces = async () => {
   
     } catch(error){
       console.log("error", error);
-    }
+    }    
 }
 
 const updateWeather = async () => {
@@ -214,41 +239,30 @@ const updateWeather = async () => {
         time4.textContent = days[currentDate.getDay() + 2]
         minmax4.textContent = `${data[0].dailyforecast[2].temp.min} / ${data[0].dailyforecast[2].temp.max}`
 
+        weatherIconMobile.src = `http://openweathermap.org/img/wn/${data[0].currentWeather.currentWeather.icon}@2x.png`
+        currentTimeMobile.textContent = '17:00'
+        currentWeatherWordMobile.textContent = data[0].currentWeather.currentWeather.main
+        tempMobile.textContent = data[0].currentWeather.currentTemperature.temp
+
+
     } catch (err) {
         console.log('error', err)
     }
 }
 
+const updateUI = async () => {
+
+    loadingAnimation();
+    await updatePlaces();
+    loadingAnimation();
+    await updateWeather();
+}
+
 //Event Listener
 button.addEventListener('click', () => {
-    
-
-    wrapper.forEach(item => {
-        item.classList.toggle('currently__loading')
-    })
-    info_wrapper.classList.toggle('currently__loading')
-    img.classList.toggle('animated-background')
-    sec.forEach(item => {
-        item.classList.toggle('animated-background')
-    })
-
-    console.log('Before')
-
-    updatePlaces();
-    updateWeather();
-
-    console.log('After')
-
+    updateUI();
 });
 
-load.addEventListener('click', () => {
-
-    wrapper.forEach(item => {
-        item.classList.toggle('currently__loading')
-    })
-    info_wrapper.classList.toggle('currently__loading')
-    img.classList.toggle('animated-background')
-    sec.forEach(item => {
-        item.classList.toggle('animated-background')
-    })
+document.addEventListener('DOMContentloaded', () => {
+    
 })
